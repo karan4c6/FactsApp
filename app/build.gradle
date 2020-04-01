@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.karansyd4.newsappexercise"
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -37,6 +37,9 @@ android {
         exclude("META-INF/*.kotlin_module")
     }
 
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -50,7 +53,13 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation "androidx.core:core-ktx:$kotlinxCoreVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 
+    implementation "com.google.android.material:material:1.1.0"
+
+    // Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
     // Glide - Image Loading
@@ -78,10 +87,21 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
 
     // Stetho
-    implementation "com.facebook.stetho:stetho:$rootProject.stetho"
-    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho"
+    implementation "com.facebook.stetho:stetho:$stetho"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stetho"
 
     //MultiDex
-    implementation "androidx.multidex:multidex:$rootProject.multidex"
+    implementation "androidx.multidex:multidex:$multidex"
+
+    //recyclerview
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:$rvSelectionVersion"
+
+    // Room Database
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    kapt "android.arch.persistence.room:compiler:$roomPersistenceVersion"
 
 }

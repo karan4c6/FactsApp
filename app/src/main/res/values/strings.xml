@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">News App Exercise</string>
+    <string name="daily_news">Daily News</string>
 </resources>
