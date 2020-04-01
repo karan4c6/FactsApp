@@ -28,6 +28,9 @@ buildscript {
         //Multidex
         multidex = '2.0.1'
 
+        // Recycler View
+        recyclerViewVersion = '1.1.0'
+        rvSelectionVersion = '1.1.0-rc01'
     }
     repositories {
         google()
