@@ -20,8 +20,12 @@ class CoreDataModule {
 
     @Provides
     fun provideLoggingInterceptor() =
-        HttpLoggingInterceptor().apply { level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
-        else HttpLoggingInterceptor.Level.NONE }
+        HttpLoggingInterceptor().apply {
+            level = when {
+                BuildConfig.DEBUG -> HttpLoggingInterceptor.Level.BODY
+                else -> HttpLoggingInterceptor.Level.NONE
+            }
+        }
 
     @Provides
     @Singleton

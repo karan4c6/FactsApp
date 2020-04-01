@@ -2,8 +2,10 @@ package com.karansyd4.newsappexercise.ui.newslist
 
 import androidx.lifecycle.MutableLiveData
 import com.karansyd4.newsappexercise.data.DataRepository
+import com.karansyd4.newsappexercise.data.local.model.NewsItem
 import com.karansyd4.newsappexercise.di.CoroutineScropeIO
 import com.karansyd4.newsappexercise.ui.base.BaseViewModel
+import com.karansyd4.newsappexercise.data.remote.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import java.util.*
@@ -34,12 +36,4 @@ class NewsListViewModel @Inject constructor(
         coroutineScope.cancel()
     }
 
-    fun searchByTitle(newsItems: List<NewsItem>, keyWord: String): NewsItem? {
-        for (newsItem in newsItems) {
-            if (newsItem.title.isNotEmpty() && newsItem.title.toLowerCase(Locale.ROOT).contains(keyWord.toLowerCase(Locale.ROOT))) {
-                return newsItem
-            }
-        }
-        return null
-    }
 }

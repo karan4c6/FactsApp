@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.karansyd4.newsappexercise.R
+import com.karansyd4.newsappexercise.data.local.model.NewsItem
 
 class NewListAdapter : ListAdapter<NewsItem, NewsViewHolder>(DiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {

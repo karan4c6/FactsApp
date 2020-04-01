@@ -1,5 +1,9 @@
 package com.karansyd4.newsappexercise.di
 
+import android.app.Application
+import com.karansyd4.newsappexercise.data.local.AppDatabase
+import com.karansyd4.newsappexercise.data.remote.NewsService
+import com.karansyd4.newsappexercise.data.remote.datasource.RemoteDataSource
 import com.karansyd4.newsappexercise.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -13,6 +17,17 @@ import kotlin.coroutines.CoroutineContext
 
 @Module(includes = [ViewModelModule::class, CoreDataModule::class])
 class AppModule {
+
+    @Singleton
+    @Provides
+    fun provideNewsService(@NewAPI okhttpClient: OkHttpClient,
+                           converterFactory: GsonConverterFactory
+    ) = provideService(okhttpClient, converterFactory, NewsService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideRemoteDataSource(newsService: NewsService)
+            = RemoteDataSource(newsService)
 
     @Provides
     @Singleton
@@ -31,6 +46,14 @@ class AppModule {
     ): OkHttpClient {
         return upstreamClient.newBuilder().build()
     }
+
+    @Singleton
+    @Provides
+    fun provideDb(app: Application) = AppDatabase.getInstance(app)
+
+    @Singleton
+    @Provides
+    fun provideNewsDao(db: AppDatabase) = db.newsDao()
 
     private fun createRetrofit(
         okhttpClient: OkHttpClient,

@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/iv_icon"
+                android:id="@+id/imgIcon"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginEnd="3dp"
@@ -44,13 +44,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toEndOf="@+id/iv_icon"
+                app:layout_constraintStart_toEndOf="@+id/imgIcon"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_newsList"
+        android:id="@+id/rvNewsList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="4sp"

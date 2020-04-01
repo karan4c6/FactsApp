@@ -10,7 +10,9 @@ class VerticalItemDecoration(private val margin: Int,
     override fun getItemOffsets(outRect: Rect, view: View,
                                 parent: RecyclerView, state: RecyclerView.State) {
         with(outRect) {
-            if (includeEdge && parent.getChildAdapterPosition(view) == 0) top = margin
+            when {
+                includeEdge && parent.getChildAdapterPosition(view) == 0 -> top = margin
+            }
             bottom = margin
         }
     }
