@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-platform-android'
 
 android {
     compileSdkVersion 29
@@ -34,4 +36,31 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    // Glide - Image Loading
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    // Dagger
+    kapt "com.google.dagger:dagger-android-processor:$daggerSupport"
+    implementation "com.google.dagger:dagger-android:$androidDagger"
+    implementation "com.google.dagger:dagger-android-support:$androidDagger"
+    implementation "com.google.dagger:dagger:$daggerCompiler"
+    kapt "com.google.dagger:dagger-compiler:$daggerCompiler"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutinesVersion"
+    implementation "android.arch.lifecycle:viewmodel:$fragmentVersion"
+    implementation "android.arch.lifecycle:extensions:$fragmentVersion"
+
+    // Networking
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+
 }
