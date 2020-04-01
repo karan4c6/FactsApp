@@ -1,6 +1,7 @@
 package com.karansyd4.newsappexercise
 
 import androidx.fragment.app.Fragment
+import com.karansyd4.newsappexercise.ui.base.BaseActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector

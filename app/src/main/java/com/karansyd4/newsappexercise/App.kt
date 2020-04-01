@@ -3,6 +3,7 @@ package com.karansyd4.newsappexercise
 import android.app.Activity
 import androidx.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
+import com.karansyd4.newsappexercise.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -21,6 +22,8 @@ class App : MultiDexApplication(), HasActivityInjector {
         when {
             BuildConfig.DEBUG -> Stetho.initializeWithDefaults(this)
         }
+
+        DaggerAppComponent.builder().application(this).build().inject(this)
 
     }
 

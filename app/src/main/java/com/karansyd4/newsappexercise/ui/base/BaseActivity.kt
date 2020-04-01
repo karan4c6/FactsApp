@@ -1,4 +1,4 @@
-package com.karansyd4.newsappexercise
+package com.karansyd4.newsappexercise.ui.base
 
 import android.os.Bundle
 import android.view.MenuItem
