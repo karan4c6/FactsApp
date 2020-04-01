@@ -63,4 +63,11 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
 
+    // Stetho
+    implementation "com.facebook.stetho:stetho:$rootProject.stetho"
+    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho"
+
+    //MultiDex
+    implementation "androidx.multidex:multidex:$rootProject.multidex"
+
 }

@@ -16,9 +16,15 @@ buildscript {
         retrofit = '2.6.0'
 
         // Dagger
-        daggerSupport = '2.25.2'
-        androidDagger = '2.25.2'
+        daggerSupport = '2.22.1'
+        androidDagger = '2.23.2'
         daggerCompiler = '2.25.2'
+
+        // Stetho
+        stetho = '1.5.1'
+
+        //Multidex
+        multidex = '2.0.1'
 
     }
     repositories {
