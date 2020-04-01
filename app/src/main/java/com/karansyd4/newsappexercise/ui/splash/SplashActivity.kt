@@ -37,6 +37,7 @@ class SplashActivity : BaseActivity() {
     private fun navigateToHomeScreen() {
         Handler().postDelayed({
             startActivity(MainActivity.createIntent(this))
+            finish()
         }, Constants.SPLASH_DELAY.toLong())
     }
 }
