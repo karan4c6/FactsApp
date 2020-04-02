@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.karansyd4.factsappexercise.R
 import com.karansyd4.factsappexercise.data.remote.Result
@@ -21,9 +22,12 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_facts.*
 import javax.inject.Inject
 
-class FactsActivity : BaseActivity(), HasSupportFragmentInjector {
+
+class FactsActivity : BaseActivity(), HasSupportFragmentInjector,
+    SwipeRefreshLayout.OnRefreshListener {
 
     companion object {
+        private val TAG = "FactsActivity"
         @JvmStatic
         fun createIntent(context: Context): Intent = Intent(context, FactsActivity::class.java)
     }
@@ -58,6 +62,7 @@ class FactsActivity : BaseActivity(), HasSupportFragmentInjector {
         rvNewsList.addItemDecoration(
             VerticalItemDecoration(resources.getDimension(R.dimen._16sp).toInt(), true)
         )
+        initSwipeToRefresh()
         when (adapter) {
             null -> {
                 adapter = NewListAdapter()
@@ -69,11 +74,18 @@ class FactsActivity : BaseActivity(), HasSupportFragmentInjector {
             }
             else -> {
                 rvNewsList.adapter = adapter
-                progressBar.visibility = View.GONE
             }
         }
     }
 
+    private fun initSwipeToRefresh() {
+        swipeRefreshLayout.setOnRefreshListener(this)
+        swipeRefreshLayout.setColorSchemeResources(
+            R.color.colorPrimary,
+            android.R.color.holo_green_dark,
+            android.R.color.holo_orange_dark
+        )
+    }
 
     /**
      * Observer all list to update UI on data change. If MutableLiveData already has data
@@ -85,22 +97,26 @@ class FactsActivity : BaseActivity(), HasSupportFragmentInjector {
         newListViewModel.mutableListLiveDataResult.observe(this, Observer { result ->
             when (result.status) {
                 Result.Status.SUCCESS -> {
-                    progressBar.visibility = View.GONE
                     rvNewsList.visibility = View.VISIBLE
                     result.data?.let { adapter.submitList(it) }
+                    swipeRefreshLayout.isRefreshing = false
                 }
                 Result.Status.LOADING -> {
-                    progressBar.visibility = View.VISIBLE
                     rvNewsList.visibility = View.GONE
+                    swipeRefreshLayout.isRefreshing = true
                 }
                 Result.Status.ERROR -> {
-                    progressBar.visibility = View.GONE
+                    swipeRefreshLayout.isRefreshing = false
                     result.message?.let {
                         Snackbar.make(rvNewsList, it, Snackbar.LENGTH_LONG).show()
                     }
                 }
             }
         })
+    }
+
+    override fun onRefresh() {
+        newListViewModel.getFactsList()
     }
 
 }
