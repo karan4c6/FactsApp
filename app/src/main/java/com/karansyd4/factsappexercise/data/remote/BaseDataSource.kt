@@ -10,7 +10,7 @@ abstract class BaseDataSource {
                 response.isSuccessful -> {
                     val body = response.body()
                     when {
-                        body != null -> return Result.success(body)
+                        body != null -> return Result.success("", body)
                     }
                 }
             }
@@ -21,6 +21,6 @@ abstract class BaseDataSource {
     }
 
     private fun <T> error(message: String): Result<T> {
-        return Result.error(message)
+        return Result.error("", message)
     }
 }

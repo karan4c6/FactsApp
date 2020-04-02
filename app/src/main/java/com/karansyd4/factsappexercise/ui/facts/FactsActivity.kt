@@ -96,7 +96,13 @@ class FactsActivity : BaseActivity(), HasSupportFragmentInjector,
             when (result.status) {
                 Result.Status.SUCCESS -> {
                     rvFactsList.visibility = View.VISIBLE
-                    result.data?.let { adapter.submitList(it) }
+                    result.title?.let {
+                        supportActionBar?.setDisplayShowTitleEnabled(true)
+                        supportActionBar?.title = it
+                    }
+                    result.data?.let {
+                        adapter.submitList(it)
+                    }
                     swipeRefreshLayout.isRefreshing = false
                 }
                 Result.Status.LOADING -> {

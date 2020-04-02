@@ -31,23 +31,23 @@ constructor(
             when (response.status) {
                 Result.Status.SUCCESS -> {
 
+                    var title = ""
                     response.data?.let {
                         Log.d(TAG, "observeFacts: ${it.title}")
+                        title = it.title
                         localRepository.saveFacts(it.rows)
                     }
 
-                    callback(Result.success(localRepository.getFactsList()))
+                    callback(Result.success(title, localRepository.getFactsList()))
                 }
                 Result.Status.ERROR -> {
                     when {
                         localRepository.getFactsListSize() > 0 -> callback(
-                            Result.success(
-                                localRepository.getFactsList()
-                            )
+                            Result.success("", localRepository.getFactsList())
                         )
                         else -> {
                             response.message?.let {
-                                callback(Result.error(it))
+                                callback(Result.error("", it))
                             }
                         }
                     }
