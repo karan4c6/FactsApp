@@ -1,4 +1,4 @@
-package com.karansyd4.newsappexercise
+package com.karansyd4.factsappexercise
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
