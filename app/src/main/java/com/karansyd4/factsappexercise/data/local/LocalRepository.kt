@@ -13,7 +13,7 @@ constructor(private val dao: FactsDao) {
      *
      * @param factsModel from api
      */
-    fun saveNews(factsModel: List<Facts>) {
+    fun saveFacts(factsModel: List<Facts>) {
         clearDatabase()
         val factsItemList: ArrayList<FactsItem> = arrayListOf()
         for (factsItem in factsModel) {

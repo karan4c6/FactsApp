@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import com.karansyd4.factsappexercise.R
 import com.karansyd4.factsappexercise.data.local.model.FactsItem
 
-class NewListAdapter : ListAdapter<FactsItem, NewsViewHolder>(DiffCallback()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        return NewsViewHolder(
+class NewListAdapter : ListAdapter<FactsItem, FactsViewHolder>(DiffCallback()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FactsViewHolder {
+        return FactsViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.facts_item, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FactsViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 }

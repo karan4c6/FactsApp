@@ -8,7 +8,7 @@ import com.karansyd4.factsappexercise.util.bindImageFromUrl
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.facts_item.*
 
-class NewsViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
+class FactsViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
     /**
@@ -22,30 +22,30 @@ class NewsViewHolder(override val containerView: View) : RecyclerView.ViewHolder
 
         when {
             factsItem.title.isEmpty() -> {
-                txtNewsTitle.text = context.getString(R.string.no_title)
-                txtNewsTitle.setTextColor(context.resources.getColor(R.color.grey))
+                txtFactTitle.text = context.getString(R.string.no_title)
+                txtFactTitle.setTextColor(context.resources.getColor(R.color.grey))
             }
             else -> {
-                txtNewsTitle.text = factsItem.title
-                txtNewsTitle.setTextColor(context.resources.getColor(R.color.factTitle))
+                txtFactTitle.text = factsItem.title
+                txtFactTitle.setTextColor(context.resources.getColor(R.color.factTitle))
             }
         }
         when {
             factsItem.description.isEmpty() -> {
-                txtNewsDesc.text = context.getString(R.string.no_description)
-                txtNewsDesc.setTextColor(context.resources.getColor(R.color.grey))
+                txtFactDesc.text = context.getString(R.string.no_description)
+                txtFactDesc.setTextColor(context.resources.getColor(R.color.grey))
             }
             else -> {
-                txtNewsDesc.text = factsItem.description
-                txtNewsDesc.setTextColor(context.resources.getColor(android.R.color.black))
+                txtFactDesc.text = factsItem.description
+                txtFactDesc.setTextColor(context.resources.getColor(android.R.color.black))
             }
         }
         when {
             factsItem.url.isEmpty() -> {
-                imgNews.setImageResource(R.drawable.placeholder)
+                imgFact.setImageResource(R.drawable.placeholder)
             }
             else -> {
-                bindImageFromUrl(imgNews, factsItem.url)
+                bindImageFromUrl(imgFact, factsItem.url)
             }
         }
     }

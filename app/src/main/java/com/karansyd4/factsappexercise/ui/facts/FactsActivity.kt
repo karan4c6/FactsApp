@@ -56,22 +56,22 @@ class FactsActivity : BaseActivity(), HasSupportFragmentInjector,
     }
 
     private fun initViews() {
-        rvNewsList.setHasFixedSize(true)
-        rvNewsList.addItemDecoration(
+        rvFactsList.setHasFixedSize(true)
+        rvFactsList.addItemDecoration(
             VerticalItemDecoration(resources.getDimension(R.dimen._16sp).toInt(), true)
         )
         initSwipeToRefresh()
         when (adapter) {
             null -> {
                 adapter = NewListAdapter()
-                rvNewsList.adapter = adapter
+                rvFactsList.adapter = adapter
                 adapter?.let {
                     subscribeUi(it)
                 }
                 newListViewModel.getFactsList()
             }
             else -> {
-                rvNewsList.adapter = adapter
+                rvFactsList.adapter = adapter
             }
         }
     }
@@ -95,18 +95,18 @@ class FactsActivity : BaseActivity(), HasSupportFragmentInjector,
         newListViewModel.mutableListLiveDataResult.observe(this, Observer { result ->
             when (result.status) {
                 Result.Status.SUCCESS -> {
-                    rvNewsList.visibility = View.VISIBLE
+                    rvFactsList.visibility = View.VISIBLE
                     result.data?.let { adapter.submitList(it) }
                     swipeRefreshLayout.isRefreshing = false
                 }
                 Result.Status.LOADING -> {
-                    rvNewsList.visibility = View.GONE
+                    rvFactsList.visibility = View.GONE
                     swipeRefreshLayout.isRefreshing = true
                 }
                 Result.Status.ERROR -> {
                     swipeRefreshLayout.isRefreshing = false
                     result.message?.let {
-                        Snackbar.make(rvNewsList, it, Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(rvFactsList, it, Snackbar.LENGTH_LONG).show()
                     }
                 }
             }

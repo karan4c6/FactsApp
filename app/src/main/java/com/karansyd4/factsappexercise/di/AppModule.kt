@@ -20,8 +20,8 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideNewsService(@NewAPI okhttpClient: OkHttpClient,
-                           converterFactory: GsonConverterFactory
+    fun provideFactsService(@NewAPI okhttpClient: OkHttpClient,
+                            converterFactory: GsonConverterFactory
     ) = provideService(okhttpClient, converterFactory, FactsService::class.java)
 
     @Singleton
@@ -53,7 +53,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideNewsDao(db: AppDatabase) = db.factsDao()
+    fun provideFactsDao(db: AppDatabase) = db.factsDao()
 
     private fun createRetrofit(
         okhttpClient: OkHttpClient,

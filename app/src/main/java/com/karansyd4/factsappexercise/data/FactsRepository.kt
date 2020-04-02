@@ -32,8 +32,8 @@ constructor(
                 Result.Status.SUCCESS -> {
 
                     response.data?.let {
-                        Log.d(TAG, "observeNews: ${it.title}")
-                        localRepository.saveNews(it.rows)
+                        Log.d(TAG, "observeFacts: ${it.title}")
+                        localRepository.saveFacts(it.rows)
                     }
 
                     callback(Result.success(localRepository.getFactsList()))

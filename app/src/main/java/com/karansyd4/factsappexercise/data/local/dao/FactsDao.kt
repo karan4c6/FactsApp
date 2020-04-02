@@ -23,7 +23,7 @@ interface FactsDao {
 
     /**
      *Get all facts item
-     * @return List of NewsEntity
+     * @return List of FactsEntity
      */
     @Transaction
     @Query("SELECT Count(*) FROM facts")

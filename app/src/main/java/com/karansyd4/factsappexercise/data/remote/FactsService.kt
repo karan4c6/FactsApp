@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface FactsService {
     @GET("s/2iodh4vg0eortkl/facts.json")
-    suspend fun fetchFacts(): Response<NewsResponse<Facts>>
+    suspend fun fetchFacts(): Response<FactsResponse<Facts>>
 }
