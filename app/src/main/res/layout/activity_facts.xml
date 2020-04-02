@@ -16,30 +16,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNewsList"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="4sp"
-        android:clipToPadding="false"
-        android:scrollbars="none"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:context=".ui.facts.FactsActivity"
-        tools:listitem="@layout/facts_item" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateTint="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNewsList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="4sp"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:context=".ui.facts.FactsActivity"
+            tools:listitem="@layout/facts_item" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
