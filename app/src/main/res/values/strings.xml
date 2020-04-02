@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Facts App</string>
+    <string name="no_title">Not Title Available</string>
+    <string name="no_description">No Description Available</string>
 </resources>

@@ -22,12 +22,10 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_facts.*
 import javax.inject.Inject
 
-
 class FactsActivity : BaseActivity(), HasSupportFragmentInjector,
     SwipeRefreshLayout.OnRefreshListener {
 
     companion object {
-        private val TAG = "FactsActivity"
         @JvmStatic
         fun createIntent(context: Context): Intent = Intent(context, FactsActivity::class.java)
     }

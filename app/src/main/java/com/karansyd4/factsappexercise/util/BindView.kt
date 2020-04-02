@@ -6,8 +6,6 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.karansyd4.factsappexercise.R
 
-private val TAG = "BindView"
-
 fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
 
     imageUrl?.let {

@@ -2,6 +2,7 @@ package com.karansyd4.factsappexercise.ui.factslist.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.karansyd4.factsappexercise.R
 import com.karansyd4.factsappexercise.data.local.model.FactsItem
 import com.karansyd4.factsappexercise.util.bindImageFromUrl
 import kotlinx.android.extensions.LayoutContainer
@@ -17,15 +18,34 @@ class NewsViewHolder(override val containerView: View) : RecyclerView.ViewHolder
      */
     fun bind(factsItem: FactsItem) {
 
-        txtNewsTitle.text = factsItem.title ?: ""
-        txtNewsDesc.text = factsItem.description ?: ""
+        val context = containerView.context
 
         when {
-            !factsItem.url.isNullOrEmpty() -> {
-                for (newItem in factsItem.url) {
-                    bindImageFromUrl(imgNews, factsItem.url)
-                    break
-                }
+            factsItem.title.isEmpty() -> {
+                txtNewsTitle.text = context.getString(R.string.no_title)
+                txtNewsTitle.setTextColor(context.resources.getColor(R.color.grey))
+            }
+            else -> {
+                txtNewsTitle.text = factsItem.title
+                txtNewsTitle.setTextColor(context.resources.getColor(R.color.factTitle))
+            }
+        }
+        when {
+            factsItem.description.isEmpty() -> {
+                txtNewsDesc.text = context.getString(R.string.no_description)
+                txtNewsDesc.setTextColor(context.resources.getColor(R.color.grey))
+            }
+            else -> {
+                txtNewsDesc.text = factsItem.description
+                txtNewsDesc.setTextColor(context.resources.getColor(android.R.color.black))
+            }
+        }
+        when {
+            factsItem.url.isEmpty() -> {
+                imgNews.setImageResource(R.drawable.placeholder)
+            }
+            else -> {
+                bindImageFromUrl(imgNews, factsItem.url)
             }
         }
     }
