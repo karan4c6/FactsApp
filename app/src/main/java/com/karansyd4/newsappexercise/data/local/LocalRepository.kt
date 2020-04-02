@@ -2,7 +2,7 @@ package com.karansyd4.newsappexercise.data.local
 
 import com.karansyd4.newsappexercise.data.local.dao.NewsDao
 import com.karansyd4.newsappexercise.data.local.model.NewsItem
-import com.karansyd4.newsappexercise.data.remote.dto.Row
+import com.karansyd4.newsappexercise.data.remote.dto.News
 import javax.inject.Inject
 
 class LocalRepository @Inject
@@ -13,7 +13,7 @@ constructor(private val dao: NewsDao) {
      *
      * @param newsModel from api
      */
-    fun saveNews(newsModel: List<Row>) {
+    fun saveNews(newsModel: List<News>) {
         clearDatabase()
         val newsItemList: ArrayList<NewsItem> = arrayListOf()
         for (newsItem in newsModel) {

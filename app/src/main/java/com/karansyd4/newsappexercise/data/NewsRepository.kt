@@ -4,7 +4,7 @@ import android.util.Log
 import com.karansyd4.newsappexercise.data.local.LocalRepository
 import com.karansyd4.newsappexercise.data.local.model.NewsItem
 import com.karansyd4.newsappexercise.data.remote.Result
-import com.karansyd4.newsappexercise.data.remote.datasource.RemoteDataSource
+import com.karansyd4.newsappexercise.data.remote.datasource.NewsDataSource
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,13 +13,13 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DataRepository @Inject
+class NewsRepository @Inject
 constructor(
-    private val remoteDataSource: RemoteDataSource,
+    private val newsDataSource: NewsDataSource,
     private val localRepository: LocalRepository
 ) {
 
-    private val TAG = DataRepository::class.java.simpleName
+    private val TAG = NewsRepository::class.java.simpleName
 
     fun observeNews(
         scope: CoroutineScope,
@@ -27,7 +27,7 @@ constructor(
     ) {
         scope.launch(Dispatchers.IO + getJobErrorHandler()) {
             callback(Result.loading())
-            val response = remoteDataSource.fetchNews()
+            val response = newsDataSource.fetchNews()
             when (response.status) {
                 Result.Status.SUCCESS -> {
 

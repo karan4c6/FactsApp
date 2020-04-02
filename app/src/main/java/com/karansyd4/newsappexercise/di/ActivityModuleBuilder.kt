@@ -1,6 +1,6 @@
 package com.karansyd4.newsappexercise.di
 
-import com.karansyd4.newsappexercise.MainActivity
+import com.karansyd4.newsappexercise.ui.news.NewsActivity
 import com.karansyd4.newsappexercise.ui.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -13,5 +13,5 @@ abstract class ActivityModuleBuilder {
     abstract fun contributeSplashActivity(): SplashActivity
 
     @ContributesAndroidInjector
-    abstract fun contributeMainActivity(): MainActivity
+    abstract fun contributeMainActivity(): NewsActivity
 }

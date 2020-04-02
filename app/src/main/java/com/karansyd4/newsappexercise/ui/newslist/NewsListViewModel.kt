@@ -1,18 +1,17 @@
 package com.karansyd4.newsappexercise.ui.newslist
 
 import androidx.lifecycle.MutableLiveData
-import com.karansyd4.newsappexercise.data.DataRepository
+import com.karansyd4.newsappexercise.data.NewsRepository
 import com.karansyd4.newsappexercise.data.local.model.NewsItem
 import com.karansyd4.newsappexercise.di.CoroutineScropeIO
 import com.karansyd4.newsappexercise.ui.base.BaseViewModel
 import com.karansyd4.newsappexercise.data.remote.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
-import java.util.*
 import javax.inject.Inject
 
 class NewsListViewModel @Inject constructor(
-    private val dataRepository: DataRepository,
+    private val newsRepository: NewsRepository,
     @CoroutineScropeIO private val coroutineScope: CoroutineScope
 ) : BaseViewModel() {
 
@@ -23,7 +22,7 @@ class NewsListViewModel @Inject constructor(
      * Get News list from data repository
      */
     fun getNewsList() {
-        dataRepository.observeNews(coroutineScope) {
+        newsRepository.observeNews(coroutineScope) {
             mutableListLiveDataResult.postValue(it)
         }
     }

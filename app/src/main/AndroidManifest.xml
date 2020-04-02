@@ -21,9 +21,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="nosensor" />
+            android:name=".ui.news.NewsActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

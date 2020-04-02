@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
-import com.karansyd4.newsappexercise.MainActivity
+import com.karansyd4.newsappexercise.ui.news.NewsActivity
 import com.karansyd4.newsappexercise.R
 import com.karansyd4.newsappexercise.ui.base.BaseActivity
 import com.karansyd4.newsappexercise.util.Constants
@@ -36,7 +36,7 @@ class SplashActivity : BaseActivity() {
 
     private fun navigateToHomeScreen() {
         Handler().postDelayed({
-            startActivity(MainActivity.createIntent(this))
+            startActivity(NewsActivity.createIntent(this))
             finish()
         }, Constants.SPLASH_DELAY.toLong())
     }

@@ -3,7 +3,7 @@ package com.karansyd4.newsappexercise.di
 import android.app.Application
 import com.karansyd4.newsappexercise.data.local.AppDatabase
 import com.karansyd4.newsappexercise.data.remote.NewsService
-import com.karansyd4.newsappexercise.data.remote.datasource.RemoteDataSource
+import com.karansyd4.newsappexercise.data.remote.datasource.NewsDataSource
 import com.karansyd4.newsappexercise.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -27,7 +27,7 @@ class AppModule {
     @Singleton
     @Provides
     fun provideRemoteDataSource(newsService: NewsService)
-            = RemoteDataSource(newsService)
+            = NewsDataSource(newsService)
 
     @Provides
     @Singleton

@@ -1,4 +1,4 @@
-package com.karansyd4.newsappexercise
+package com.karansyd4.newsappexercise.ui.news
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
+import com.karansyd4.newsappexercise.R
 import com.karansyd4.newsappexercise.data.remote.Result
 import com.karansyd4.newsappexercise.di.ViewModelFactory
 import com.karansyd4.newsappexercise.di.injectViewModel
@@ -20,11 +21,11 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), HasSupportFragmentInjector {
+class NewsActivity : BaseActivity(), HasSupportFragmentInjector {
 
     companion object {
         @JvmStatic
-        fun createIntent(context: Context): Intent = Intent(context, MainActivity::class.java)
+        fun createIntent(context: Context): Intent = Intent(context, NewsActivity::class.java)
     }
 
     @Inject
@@ -101,6 +102,5 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
             }
         })
     }
-
 
 }
