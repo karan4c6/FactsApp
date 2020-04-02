@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.karansyd4.newsappexercise">
+    package="com.karansyd4.factsappexercise">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,9 +21,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="nosensor" />
+            android:name=".ui.facts.FactsActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
